@@ -54,22 +54,44 @@ blah, blah, blah, blah
       	
       </style>
       
-   </head> 
-   
-   <body> 
+   </head>
+	
+<body>  
+	
+<!-- Start of Page 1 -->
+	<div data-role="page" id="page1">
 
-     <div data-role="page">
-	<div data-role="header">
-		<h1>My Hello World App!</h1>
-	</div><!-- /header -->
+		<div data-role="header">
+			<h1>Page 1 Header</h1>
+		</div><!-- /header -->
 
-	<div data-role="content">	
-		<p>Hello World! (Your name) is here.</p>		
-	</div><!-- /content -->
+		<div role="main" class="ui-content">
+			<p>This is a paragraph in the main/content section.</p>
+			<a href="#page2" class="ui-btn">Button to Page 2</a>
+		</div><!-- /content -->
 
-	<div data-role="footer" data-position="fixed">
-		<p>This is the footer!</p>
-	</div><!-- /footer -->
-     </div><!-- /page -->
+		<div data-role="footer">
+			<h4>Page 1 Footer</h4>
+		</div><!-- /footer -->
+	</div><!-- /page 1 -->
+
+<!-- Start of Page 2 -->
+	<div data-role="page" id="page2">
+
+		<div data-role="header">
+			<h1>Page 2 Header</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p><a href="#page1" class="ui-btn">Back to Page 1</a></p>
+		</div><!-- /content -->
+
+		<div data-role="footer">
+			<h4>Page 2 Footer</h4>
+		</div><!-- /footer -->
+	</div><!-- /page 2-->
+	   	   
+	   
+	   
    </body>
 </html>
