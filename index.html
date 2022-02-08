@@ -23,9 +23,271 @@ Known Issues:
 blah, blah, blah, blah
 -->
 
+<!-- for mobile device viewing -->	
    <head> 
-      
-	   PUT YOUR OLD CODE IN HERE
+      <title>Cold-or-Allergy</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+	   <!--references stylesheet page to use elements within it. it normalizes html elements and helps remove possible browser inconsistencies -->
+   </head> 
+
+	
+<script>
+        var allergy_count = 0;
+	//allergy count alert from original source code removed 
+	
+        var cold_count = 0;
+	//cold count and allergy count set to 0 initially to ensure proper percentages
+	
+	var finalResults = document.getElementById("percentages");
+	//for storing results 
+
+
+        function allergyAdd(){
+            allergy_count = allergy_count + 1;
+        }
+        function coldAdd(){
+            cold_count = cold_count + 1;
+        }
+	//functions for adding values when an answer is clicked
+	
+
+/*Results page forumla. Diplays survey results by percentage
+When ran, it will divide the number of allergy_count responses by the total number of questions and multiply it by 100 to achieve a percentage value to be displayed */
+        
+	function getResults(){
+		var allergyPercent = 100 * (allergy_count/(allergy_count + cold_count));
+		var coldPercent = 100 * (cold_count/(allergy_count + cold_count));
+		var finalResults = document.getElementById("percentages")
+		   
+		.innerHTML = "Probability it is allergies =" + allergyPercent + "%" + "<br> Probability it is a cold =" + coldPercent + "%"; 
+			//added "%" after percent display so it's not just the numbers
+			//percentages should be hidden until button is clicked
+
+	}
+  </script>
+
+
+<!-- allows pages to be displayed -->
+<style>	
+	
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+	
+<!-- z-index is above; brings up targeted page -->	
+	
+
+	
+<!-- first page begins -->
+<body>
+<div id="header" class="w3-container w3-flat-carrot">
+		<!-- targets page and tells browser to display -->
+	<h1>Cold or Allergies?</h1>
+		<!--text gets displayed in colored header at top of page -->
+</div>
+	
+<div id="content" class="w3-container">
+	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange"> Get Started! </a>
+
+		<!--All buttons changed from source code to be dark grey with rounded edges. They change to orange when hovered over -->
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+		<!--disclaimers -->
+
+	
+	
+	
+<!-- diagnostic questions start here -->
+	
+<div class="page" id="one">
+		<!-- id assigns this new page a "name" so that it can be targeted later if necessary. for instance, if we needed to link back to this first question, we could do so using it's id "one" -->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1>
+	</div>
+	
+    	<div id="content" class="w3-container">
+        <p>Are your eyes watery or itchy?</p>
+		<!-- first question -->
+		<p>
+			<a href="#two"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+			<a href="#two"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+			
+			<!--a href links will add 1 value to either cold or allergy functions upon clicking, and redirect user to next question/page -->
+			<!-- new page redirection is done by targeting next page using it's div id -->
+			
+		</p>
+    	</div>
+</div>
+
+	
+<!-- footer display on results page -->
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>	
+	
+	
+	
+	
+<div class="page" id="two">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a fever?</p>
+		<a href="#three"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#three"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	</div>
+</div>	
+	
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>
+	
+	
+	
+	
+<div class="page" id="three">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a sore throat?</p>
+		<a href="#four"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#four"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	</div>
+</div>	
+
+	
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>	
+	
+	
+	
+	
+<div class="page" id="four">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are your symptoms seasonal or chronic?</p>
+		<a href="#five"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#five"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	</div>
+	
+	
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>
+	
+	
+	
+	
+<!-- additional diagnostic questions below -->
+	
+</div>	
+
+	<div class="page" id="five">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are you experiencing general body aches or pains that cannot be explained by alternate causes (ex. rigorous exercise)?</p>
+		<a href="#six"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#six"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	</div>
+</div>	
+	
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>
+	
+	
+	
+	<!-- final question -->
+	
+</div>	
+
+	<div class="page" id="six">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1>
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Are your symptoms set off by external stimuli (ex. going outside, being around certain animals such as cats, etc.)</p>
+		<a href="#results"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#results"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	</div>
+</div>	
+	
+	
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>
+	
+	
+	
+<!-- last page; shows calculated results and probability percentage of cold vs allergies -->
+	
+	
+	
+<div class="page" id="results">
+	<div class="w3-container w3-flat-carrot">
+		<h1>Almost there!</h1>
+	</div>
+	
+	<p> </p>
+			<!-- paragraph tags to improve spacing with button; it presses right up against the border; ideally this will create a slight buffer to make it more visually streamlined/appealing -->
+			<!-- note to self for future: find way to do this without having to just put in a blank paragraph tag -->
+
+	<div id="content" class="w3-container">
+		
+	<a onclick="getResults();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Click here to get your results</a>
+		<!--final results should be hidden until button is clicked, then results should pop up -->
+	
+	<p id="percentages"></p>
+		<!-- changed "results" to "getResults():"--should display results function now -->
+	</div>
+	
+<!-- above button should display percantage results upon being clicked -->
+
+	
+	
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p> Maker Space 2022! </p>
+</footer>
+	<!-- note for future: why is there a small white/blank space in the far left area of all the footers except for the final page and question 4? (not yet sure about question 6, that update is within the commit currently being written) -->
+
 	   
    </body>
 </html>
