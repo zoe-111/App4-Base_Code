@@ -6,8 +6,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
  
 Authors in chronological order of contribution:
-Author 1
-Author 2
+Zoe Tijerina
  
 Further Information:
 http://diystream.cns.utexas.edu/
@@ -17,10 +16,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+To quickly assess likelihood that user is experiencing/helping someone who is experiencing a stroke.
  
 Known Issues:
-blah, blah, blah, blah
+Does not provide proper medical evaluation. Does not account for other possible diagnoses. Only looks at six possible symptoms.
 -->
 
 <!-- for mobile device viewing -->	
@@ -32,39 +31,52 @@ blah, blah, blah, blah
       <link rel="stylesheet" href="w3-colors-flat.css">
 	   <!--references stylesheet page to use elements within it. it normalizes html elements and helps remove possible browser inconsistencies -->
    </head> 
+	
+
 
 	
 <script>
-        var allergy_count = 0;
-	//allergy count alert from original source code removed 
 	
-        var cold_count = 0;
-	//cold count and allergy count set to 0 initially to ensure proper percentages
+	// The following code lets you know when the file was last modified.
+	// This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
+     	  var docMod = document.lastModified;
+     	  alert("This file last modified  " + docMod);
+     	  console.log("This file last modified  " + docMod);
+	// If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
+
+	
+	
+        var stroke_count = 0;
+	
+	var no_count = 0;
+	
+	//stroke and no-stroke counts set to 0 initially to ensure proper percentages
 	
 	var finalResults = document.getElementById("percentages");
 	//for storing results 
 
 
-        function allergyAdd(){
-            allergy_count = allergy_count + 1;
+        function strokeAdd(){
+            stroke_count = stroke_count + 1;
         }
-        function coldAdd(){
-            cold_count = cold_count + 1;
+	
+	
+	function noAdd(){
+            no_count = no_count + 1;
         }
-	//functions for adding values when an answer is clicked
+	//for adding values when an answer that might indicate experiencing a stroke is clicked
 	
 
 /*Results page forumla. Diplays survey results by percentage
 When ran, it will divide the number of allergy_count responses by the total number of questions and multiply it by 100 to achieve a percentage value to be displayed */
         
 	function getResults(){
-		var allergyPercent = 100 * (allergy_count/(allergy_count + cold_count));
-		var coldPercent = 100 * (cold_count/(allergy_count + cold_count));
+		var strokePercent = 100 * (stroke_count/(stroke_count + no_count));
 		var finalResults = document.getElementById("percentages")
 		   
-		.innerHTML = "Probability it is allergies =" + allergyPercent + "%" + "<br> Probability it is a cold =" + coldPercent + "%"; 
+		.innerHTML = "Probability you are experiencing a stroke =" + strokePercent + "%"; 
 			//added "%" after percent display so it's not just the numbers
-			//percentages should be hidden until button is clicked
+			//percentage should be hidden until button is clicked
 
 	}
   </script>
@@ -102,12 +114,14 @@ When ran, it will divide the number of allergy_count responses by the total numb
 <body>
 <div id="header" class="w3-container w3-flat-carrot">
 		<!-- targets page and tells browser to display -->
-	<h1>Cold or Allergies?</h1>
+	<h1>Are you experiencing a stroke?</h1>
 		<!--text gets displayed in colored header at top of page -->
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+	<p>Strokes are a result of interrupted blood supply to the brain, and are considered a serious medical emergency. When in doubt, contact your local emergency services immediately.</p>
+	
+	<p>For all the following questions, please answer as if you are the person experiencing the symptoms, regardless of if you are answering for someone else</p>
 	
 	<a href="#one" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange"> Get Started! </a>
 
@@ -130,23 +144,23 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	</div>
 	
     	<div id="content" class="w3-container">
-        <p>Are your eyes watery or itchy?</p>
+        <p>Are you experiencing a severe headache?</p>
 		<!-- first question -->
-		<p>
-			<a href="#two"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
-			<a href="#two"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+		
+		<a href="#two"  onclick="strokeAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#two"  onclick="noAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
 			
-			<!--a href links will add 1 value to either cold or allergy functions upon clicking, and redirect user to next question/page -->
-			<!-- new page redirection is done by targeting next page using it's div id -->
+		<!--a href links will either add 1 value to the stroke function upon clicking or not, and redirect user to next question/page depending on which is clicked -->
+		<!-- new page redirection is done by targeting next page using it's div id -->
 			
-		</p>
+		
     	</div>
 </div>
 
 	
 <!-- footer display on results page -->
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>	
 	
 	
@@ -158,15 +172,16 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Do you have a fever?</p>
-		<a href="#three"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
-		<a href="#three"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	<p>Have you developed sudden numbness or weakness in your arm or leg, even if only on one side?</p>
+		
+		<a href="#three"  onclick="strokeAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#three"  onclick="noAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
 	</div>
 </div>	
 	
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>
 	
 	
@@ -178,15 +193,16 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Do you have a sore throat?</p>
-		<a href="#four"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
-		<a href="#four"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+	<p>Are you having trouble communicating (this includes confusion, slurried speech, difficultity understanding others)?</p>
+		
+		<a href="#four"  onclick="strokeAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#four"  onclick="noAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
 	</div>
 </div>	
 
 	
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>	
 	
 	
@@ -198,14 +214,15 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Are your symptoms seasonal or chronic?</p>
-		<a href="#five"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
-		<a href="#five"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+		<p>Are you having trouble balancing, staying upright, and/or experiencing dizziness?</p>
+		
+		<a href="#five"  onclick="strokeAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#five"  onclick="noAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
 	</div>
 	
 	
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>
 	
 	
@@ -221,15 +238,15 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Are you experiencing general body aches or pains that cannot be explained by alternate causes (ex. rigorous exercise)?</p>
-		<a href="#six"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
-		<a href="#six"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+		<p>Are you having difficulty seeing? This includes blurry or darkened vision from either or both eyes.</p>
+		<a href="#six"  onclick="strokeAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#six"  onclick="noAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
 	</div>
 </div>	
 	
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>
 	
 	
@@ -244,20 +261,20 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Are your symptoms set off by external stimuli (ex. going outside, being around certain animals such as cats, etc.)</p>
-		<a href="#results"  onclick="allergyAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
-		<a href="#results"  onclick="coldAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
+		<p>Is one side of your face drooping?</p>
+		<a href="#results"  onclick="strokeAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">Yes</a>
+		<a href="#results"  onclick="noAdd();" class="w3-btn w3-dark-grey w3-round-large w3-hover-orange">No</a>
 	</div>
 </div>	
 	
 	
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>
 	
 	
 	
-<!-- last page; shows calculated results and probability percentage of cold vs allergies -->
+<!-- last page; shows calculated results and probability percentage that they are having a stroke -->
 	
 	
 	
@@ -276,7 +293,7 @@ When ran, it will divide the number of allergy_count responses by the total numb
 		<!--final results should be hidden until button is clicked, then results should pop up -->
 	
 	<p id="percentages"></p>
-		<!-- changed "results" to "getResults():"--should display results function now -->
+	
 	</div>
 	
 <!-- above button should display percantage results upon being clicked -->
@@ -284,7 +301,7 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	
 	
 <footer class="w3-bottom w3-container w3-flat-carrot">
-	<p> Maker Space 2022! </p>
+	<p>When in doubt, contact emergency services immediately. Strokes are life-threatening and require urgent medical attention.</p>
 </footer>
 	<!-- note for future: why is there a small white/blank space in the far left area of all the footers except for the final page and question 4? (not yet sure about question 6, that update is within the commit currently being written) -->
 
