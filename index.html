@@ -85,28 +85,44 @@ When ran, it will divide the number of allergy_count responses by the total numb
 <!-- allows pages to be displayed -->
 <style>	
 	
-.body {
-     margin: 0em;
-}
+	img, object{
+		max-height:90%;
+      		max-width:90%;
+        }
 
-.page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
-}
+	
+	
+	.body {
+ 	    margin: 0em;
+	}
 
-  .page:target {
-    left: 0vw;
-    z-index: 1;
-}
+	
+	
+	.page {
+   	 width: 100vw;
+  	  height: 100vh;
+  	  position: fixed;
+ 	   top: 0;
+ 	   left: -100vw;
+	    overflow-y: auto;
+	    z-index: 0;
+ 	   background-color: hsl(0,0%,100%);
+	}
+
+	
+	
+ 	 .page:target {
+  	  left: 0vw;
+ 	   z-index: 1;
+	}
+		
+	
 </style>
 	
-<!-- z-index is above; brings up targeted page -->	
+<!-- 
+z-index is above; brings up targeted page 
+img, object allows for images to be resized according to the screen display
+-->	
 	
 
 	
@@ -125,6 +141,10 @@ When ran, it will divide the number of allergy_count responses by the total numb
 	
 	<a href="#one" class="w3-btn w3-flat-asbestos w3-round-large w3-hover-crimson"> Get Started! </a>
 
+	
+	<img src="https://www.neuroskills.com/images/grapic-FASTstroke.jpg" alt="befast stroke graphic">
+	
+	
 		<!--All buttons changed from source code to be dark grey with rounded edges. They change to orange when hovered over -->
 	
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
